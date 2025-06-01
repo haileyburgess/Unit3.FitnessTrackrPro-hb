@@ -1,5 +1,5 @@
 import { useAuth } from "../auth/AuthContext";
-import { NavLink } from "react-router";
+import { NavLink } from "react-router-dom";
 
 /** Navbar with site navigation links */
 export default function Navbar() {
@@ -13,8 +13,8 @@ export default function Navbar() {
           <a onClick={() => logout()}>Log out</a>
         ) : (
           <>
-            <NavLink to="auth/register">Register</NavLink>
-            <NavLink to="auth/login">Login</NavLink>
+            <NavLink to="/register">Register</NavLink>
+            <NavLink to="/login">Login</NavLink>
           </>
         )}
       </nav>

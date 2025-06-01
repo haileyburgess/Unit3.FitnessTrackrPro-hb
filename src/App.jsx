@@ -14,12 +14,12 @@ import Layout from "./layout/Layout.jsx";
 export default function App() {
   return (
     <>
-      <Navbar />
+    <Navbar />
       <Routes>
         <Route element={<Layout />} />
-        <Route path="/activities/ActivitiesPage" element={<ActivitiesPage />} />
-        <Route path="/auth/Login" element={<Login />} />
-        <Route path="/auth/Register" element={<Register />} />
+        <Route path="/activities" element={<ActivitiesPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
     </>
