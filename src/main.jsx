@@ -6,18 +6,19 @@ import Layout from "./layout/Layout";
 
 import { AuthProvider } from "./auth/AuthContext";
 import { ApiProvider } from "./api/ApiContext";
-import { PageProvider } from "./layout/PageContext";
+import { BrowserRouter } from "react-router";
+import Navbar from "./layout/Navbar.jsx";
 
 createRoot(document.getElementById("root")).render(
   <AuthProvider>
     <ApiProvider>
-      <PageProvider>
-      <BrowserRouter />
-        <Layout>
+      <BrowserRouter>
+      <Navbar>
+      <Layout>
           <App />
-        </Layout>
-        <BrowserRouter />
-      </PageProvider>
+      </Layout>
+      </Navbar>
+      </BrowserRouter>
     </ApiProvider>
-  </AuthProvider>,
+  </AuthProvider>
 );
