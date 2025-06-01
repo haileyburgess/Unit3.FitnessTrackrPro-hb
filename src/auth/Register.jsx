@@ -1,21 +1,23 @@
 import { useAuth } from "./AuthContext";
-import { Link } from "react-router";
-import { useParams } from "react-router";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 /** A form that allows users to register for a new account */
 export default function Register() {
+  const [error, setErrorMessage] = useState();
   const { register } = useAuth();
+  const navigate = useNavigate();
 
-  const { error } = useParams();
 
   const tryRegister = async (formData) => {
     const username = formData.get("username");
     const password = formData.get("password");
     try {
       await register({ username, password });
-      setPage("activities");
+      navigate("/activities");
     } catch (e) {
-      setError(e.message);
+      setErrorMessage(e.message);
     }
   };
 
