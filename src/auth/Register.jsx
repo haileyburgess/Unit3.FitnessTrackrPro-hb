@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useAuth } from "./AuthContext";
-import { usePage } from "../layout/PageContext";
+import { Link } from "react-router";
+import { useParams } from "react-router";
 
 /** A form that allows users to register for a new account */
 export default function Register() {
   const { register } = useAuth();
-  const { setPage } = usePage();
 
-  const [error, setError] = useState(null);
+  const { error } = useParams();
 
   const tryRegister = async (formData) => {
     const username = formData.get("username");
@@ -35,9 +35,9 @@ export default function Register() {
         <button>Register</button>
         {error && <output>{error}</output>}
       </form>
-      <a onClick={() => setPage("login")}>
+      <Link to="/auth/login">
         Already have an account? Log in here.
-      </a>
+      </Link>
     </>
   );
 }

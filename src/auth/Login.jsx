@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useAuth } from "./AuthContext";
 import { Link } from "react-router";
+import { useParams } from "react-router";
 
 /** A form that allows users to log into an existing account. */
 export default function Login() {
   const { login } = useAuth();
 
-  const [error, setError] = useState(null);
+  const { error } = useParams();
 
   const tryLogin = async (formData) => {
     const username = formData.get("username");
