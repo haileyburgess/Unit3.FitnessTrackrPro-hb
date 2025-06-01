@@ -36,7 +36,9 @@ function ActivityListItem({ activity }) {
 
   const handleClick = () => {
     console.log(`${activity.name}`); //confirmed it is logging 
-    navigate("/activities/:activity");
+    console.log(`${activity.description}`);
+    navigate(`/activities/${activity.name}`);
+    console.log(`${activity.id}`);
   }
 
   return (
