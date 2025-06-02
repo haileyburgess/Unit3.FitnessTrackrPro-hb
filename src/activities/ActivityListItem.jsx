@@ -1,22 +1,24 @@
-import { useParams } from "react-router-dom";
-import useQuery from "../api/useQuery";
-import { ActivityListItem } from "./ActivityList";
+import { useNavigate } from "react-router-dom";
 
-export default function SingleActivityPage() {
-  const { id } = useParams();
-  const { activity } = useQuery(id);
+/** Shows a single activity. Logged-in users will also see a delete button. */
+export default function ActivityListItem({ activity }) {
+  console.log(activity);
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    console.log(`${activity.name}`); //confirmed it is logging
+    console.log(`${activity.description}`);
+    navigate(`/activities/${activity.id}`);
+    console.log(`${activity.id}`);
+  };
+
   return (
-    <div>
-      <ActivityListItem activity={activity}></ActivityListItem>
-      <h2> 
-        {activity.name}
-      </h2>
-      <h3> 
-        Creator ID: {activity.creatorid}
-      </h3>
-      <p>
-        {activity.description}
-      </p>
-    </div>
+    <li onClick={handleClick}>
+      {activity && (
+        <div>
+          <p>{activity.name}</p>
+        </div>
+      )}
+    </li>
   );
 }
