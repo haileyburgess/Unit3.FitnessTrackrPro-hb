@@ -1,17 +1,22 @@
 import { useParams } from "react-router-dom";
 import useQuery from "../api/useQuery";
-import { act } from "react";
-
+import { ActivityListItem } from "./ActivityList";
 
 export default function SingleActivityPage() {
-
-    const { id } = useParams();
-    const  { activity } = useQuery(id);
-
-    console.log(activity);
-    return (
-    <h2>
-    
-    </h2>
-);
+  const { id } = useParams();
+  const { activity } = useQuery(id);
+  return (
+    <div>
+      <ActivityListItem activity={activity}></ActivityListItem>
+      <h2> 
+        {activity.name}
+      </h2>
+      <h3> 
+        Creator ID: {activity.creatorid}
+      </h3>
+      <p>
+        {activity.description}
+      </p>
+    </div>
+  );
 }
